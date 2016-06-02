@@ -7,7 +7,8 @@ set BUILD_DIR=build/
 rem COLLECT ALL CHAPTERS
 set INPUT_FILES=title.txt ^
 01-getting-started/00-chapter1.md ^
-02-developing-constructs/00-chapter2.md
+02-developing-constructs/00-chapter2.md ^
+03-advanced-topics/00-chapter3.md
 
 rem CREATE BUILD FOLDER IF IT DOESN'T EXIST
 if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
