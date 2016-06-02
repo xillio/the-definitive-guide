@@ -1,7 +1,7 @@
 @echo off
 
 rem PROPERTIES
-set OUTPUT_TITLE=Xill Plugins - The Definitive Guide
+set OUTPUT_TITLE=Xill.Plugins.The.Definitive.Guide
 set BUILD_DIR=build/
 
 rem COLLECT ALL CHAPTERS
