@@ -35,7 +35,9 @@ and load dependencies.
 Working together to build something great is an amazing experience. The 
 same applies to this guide, if you would like to see something explained 
 in more detail or some subject is missing entirely then simply comment 
-on the page or find someone to add it.  
+on the page or find someone to add it.
+
+<!--- TODO: INCLUDE A PROJECT SETUP GUIDE -->
 
 [1]: https://bitbucket.org/xillio/xill
 [2]: https://books.google.nl/books?id=ka2VUBqHiWkC

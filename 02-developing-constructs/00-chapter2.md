@@ -69,8 +69,7 @@ if(expression.getType() == ExpressionDataType.OBJECT) {
 
 ### Every Expression has Every Type
 That's right, every single expression has every type. This means that 
-every expression has a String, Number and Boolean representation. This 
-is how we try to overcome the continuous casting between those types.
+every expression has a String, Number and Boolean representation.
 
 **Type**    **String**            **Boolean**                  **Number**
 ---------   -------------------   --------------------------   -------------------------------
@@ -78,3 +77,135 @@ is how we try to overcome the continuous casting between those types.
                                   otherwise true               otherwise Double.NaN 
 *LIST*      Json Representation   true                         Length of list
 *OBJECT*    Json Representation   true                         Size of object
+
+This principle allows the user to not worry about typing while making the 
+language stable without casting around the types. Note that this means 
+that it is not possible to check whether the input of a construct was a 
+String, Number or Boolean. For 
+example: There is no difference between the expressions 5 and "5" once 
+you receive it at the construct level.
+
+## Construct Overview
+![Construct FlowChart](resources/construct_overview_flow_chart.png)
+The above diagram shows a representation of the flow from a script to 
+functionality. This is done through input parameters. In Xill a 
+programmer will call a construct using the package syntax: 
+`System.print(....)` with input parameters. These parameters are all 
+MetaExpressions from which the construct extracts information.
+
+> **Best Practice:** All required information is acquired from the 
+  MetaExpressions this means that generally the construct is the last 
+  point where Xill logic exists. From this point on all components should 
+  not be using any object from the Xill platform.
+
+### Creating a Construct
+A construct is actually a factory that builds ConstructProcessors. This 
+ConstructProcessor is an object that will process a lambda expression 
+with parameters passed from the language. Let's see how we make a 
+processor like this.
+
+#### Construct with one Argument
+```java
+import nl.xillio.xill.api.components.MetaExpression;
+import nl.xillio.xill.api.construct.Argument;
+import nl.xillio.xill.api.construct.Construct;
+import nl.xillio.xill.api.construct.ConstructContext;
+import nl.xillio.xill.api.construct.ConstructProcessor;
+ 
+public class MinimalConstruct extends Construct {
+ 
+    @Override
+    public ConstructProcessor prepareProcess(final ConstructContext context) {
+        return new ConstructProcessor(
+            input -> fromValue(input.getNumberValue().doubleValue() + 1),
+            new Argument("input", fromValue(100), ATOMIC)
+        );
+    }
+ 
+}
+```
+
+The first thing you should do is extend the Construct class from the 
+api. This will add auto configuration to your construct giving it a 
+name, find documentation and load all services. The next thing that must 
+be done is implement the prepareProcess mehod. This method will be called 
+by the Xill Processor when compiling the script. This is the factory 
+method for the ConstructProcessor. It takes a function and Argument 
+object as input. Let's walk through this step by step.
+
+```java
+public class MinimalConstruct extends Construct
+```
+Here we extend the Construct class to gain the auto configuration 
+functionality.
+
+```java
+return new ConstructProcessor
+```
+Here we create the new ConstructProcessor for the Xill compiler to use.
+
+```java
+input -> fromValue(input.getNumberValue().doubleValue() + 1)
+```
+The first argument of the ConstructProcessor constructor is the function. 
+This function takes one argument, gets the double value stored in this 
+argument and adds 1.
+
+```java
+new Argument("input", fromValue(100), ATOMIC)
+```
+Here we initialize a new Argument called 'input' with the default value 
+100 which only accepts ATOMIC values.
+
+> **Tip:** If you want to accept multiple types you can provide them in 
+  the constructor too: new Argument("input", fromValue(100), ATOMIC, LIST)
+
+### More Functionality
+Of course most of the constructs you will be building aren't anywhere 
+near as simple as the example above so here is an explanation on how to 
+add different functionality.
+
+#### Larger Process Functions
+Generally a process method will not be a one-liner so it is good practice 
+to extract this function to a method.
+
+```java
+import nl.xillio.xill.api.components.MetaExpression;
+import nl.xillio.xill.api.construct.Argument;
+import nl.xillio.xill.api.construct.Construct;
+import nl.xillio.xill.api.construct.ConstructContext;
+import nl.xillio.xill.api.construct.ConstructProcessor;
+ 
+public class MinimalConstruct extends Construct {
+     
+    @Override
+    public ConstructProcessor prepareProcess(final ConstructContext context) {
+        return new ConstructProcessor(
+            this::process,
+            //Or input -> process(input)
+            new Argument("input", fromValue(100), ATOMIC)
+        );
+    }
+    
+    private MetaExpression process(MetaExpression input) {
+        double value = input.getNumberValue().doubleValue() + 1;
+        return fromValue(value);
+    }
+ 
+}
+```
+
+#### Overriding the default name
+By default the name of the construct is set to the class name without 
+the Construct suffix. This behavior can be overridden.
+
+```java
+public class MinimalConstruct extends Construct {
+  
+    @Override
+    public String getName() {
+        return "min";
+    }
+
+}
+```
