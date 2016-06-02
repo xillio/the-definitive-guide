@@ -1,3 +1,4 @@
+# Getting Started
 This guide is for anyone interested in developing a plugin for the Xill 
 language in an organised and clean way or for those seeking to get a 
 better understanding of the framework. In the first section of this 
@@ -10,7 +11,15 @@ component of it. Last but not least, we will cover some more advanced
 topics in the third section and dig a little deeper into the 
 architecture.
 
-## Required Knowledge
+## About Xill
+Xill is a domain specific scripting language geared towards anything
+content. It was developed as a solution to a migration consultant's need 
+of resilience as well as flexibility. The current version is the third
+iteration of this concept and focuses mainly on modularity and
+extendability. To allow for this we introduced a plugin framework that
+allows anyone to add functionality to the language.
+
+### Required Knowledge
 To be able to build a plugin for the Xill language there is no need for 
 advanced knowledge of programming. However, if you want to create a 
 stable, maintainable and testable project it is recommended to read up 
@@ -22,11 +31,11 @@ Java.
 Basic knowledge of [Gradle 2][3] is required to be able to create a project 
 and load dependencies.
 
-## Helping Out
+### Helping Out
 Working together to build something great is an amazing experience. The 
 same applies to this guide, if you would like to see something explained 
 in more detail or some subject is missing entirely then simply comment 
-on the page or find someone to add it.
+on the page or find someone to add it.  
 
 [1]: https://bitbucket.org/xillio/xill
 [2]: https://books.google.nl/books?id=ka2VUBqHiWkC
