@@ -16,18 +16,19 @@
     </meta>
 
     <toc name="Table of Contents">
-        <item name="Introduction" ref="introduction.md"/>
-        <item name="Getting Started" ref="getting-started/index.md"/>
-        <item name="Developing Constructs" ref="developing-constructs/index.md"/>
-        <item name="Advanced Topics" ref="advanced-topics/index.md"/>
+        <item name="Introduction" ref="00-introduction.md"/>
+        <item name="Getting Started" ref="01-getting-started.md"/>
+        <item name="Developing Constructs" ref="02-developing-constructs/00-index.md">
+            <item name="MetaExpression" ref="02-developing-constructs/01-MetaExpression.md"/>
+        </item>
     </toc>
 
     <cover>
         <coverTitle>${project.name}</coverTitle>
         <coverSubTitle>v. ${project.version}</coverSubTitle>
         <coverType>Developer Manual</coverType>
-        <author>Thomas Biesaart - Xillio</author>
-        <companyLogo>xillio-logo.png</companyLogo>
+        <author>Thomas Biesaart</author>
+        <companyLogo>images/logos/xillio.png</companyLogo>
     </cover>
 
 </document>
