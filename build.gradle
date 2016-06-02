@@ -1,0 +1,52 @@
+// First we should gather all markdown files in the repository
+ext.markdownFiles = fileTree(projectDir)
+        .matching(
+        {
+            include "**/**.md"
+            exclude "README.md"
+            exclude "resources/**"
+        }
+)
+        .files
+
+// Then we create all tasks
+
+task clean {
+    delete buildDir
+}
+
+task build(group: 'build') {
+
+}
+
+pandocTask("pdf", "latex", "pdf")
+pandocTask("html", "html5", "html")
+pandocTask("epub", "epub", "epub")
+pandocTask("docx", "docx", "docx")
+
+
+
+def pandocTask(taskName, outputType, extension) {
+    def outputFile = new File(buildDir, baseDocumentName + '.' + extension);
+
+    project.task(taskName, group: 'build', type: Exec) {
+        doFirst {
+            mkdir buildDir
+        }
+        commandLine 'pandoc',
+                '--smart',
+                '--normalize',
+                '--standalone',
+                '--wrap=auto',
+                '--highlight-style=tango',
+                '--toc',
+                "--to=$outputType",
+                '-o',
+                outputFile
+
+        args 'title.txt'
+        args markdownFiles
+    }
+
+    build.dependsOn taskName
+}
