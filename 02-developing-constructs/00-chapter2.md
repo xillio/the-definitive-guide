@@ -116,9 +116,11 @@ import nl.xillio.xill.api.construct.ConstructProcessor;
 public class MinimalConstruct extends Construct {
  
     @Override
-    public ConstructProcessor prepareProcess(final ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            final ConstructContext context) {
         return new ConstructProcessor(
-            input -> fromValue(input.getNumberValue().doubleValue() + 1),
+            input -> 
+                fromValue(input.getNumberValue().doubleValue() + 1),
             new Argument("input", fromValue(100), ATOMIC)
         );
     }
@@ -180,7 +182,8 @@ import nl.xillio.xill.api.construct.ConstructProcessor;
 public class MinimalConstruct extends Construct {
      
     @Override
-    public ConstructProcessor prepareProcess(final ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            final ConstructContext context) {
         return new ConstructProcessor(
             this::process,
             //Or input -> process(input)
@@ -274,7 +277,8 @@ public class MinimalConstruct extends Construct {
     }
     
     @Override
-    public ConstructProcessor prepareProcess(final ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            final ConstructContext context) {
         return new ConstructProcessor(
             this::process,
             //Or input -> process(input)
@@ -283,7 +287,9 @@ public class MinimalConstruct extends Construct {
     }
     
     private MetaExpression process(MetaExpression input) {
-        String value = input.getStringValue() + myNewService.getRandomString();
+        String value = input.getStringValue() + 
+                        myNewService.getRandomString();
+                        
         return fromValue(value);
     }
 
@@ -316,14 +322,17 @@ stop, pause or ignore these errors.
 ```java
 public class ErrorConstruct extends Construct {
     @Override 
-    public ConstructProcessor prepareProcess(ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            ConstructContext context) {
         return new ConstructProcessor(
             input -> process(input, context.getRootLogger()),
             new Argument("input", fromValue(""), ATOMIC)
         );
     }
     
-    private MetaExpression process(MetaExpression input, Logger logger) {
+    private MetaExpression process(
+            MetaExpression input, 
+            Logger logger) {
         String message = input.getStringValue();
         logger.error(logger);
         return fromValue("Errror: " + message);
@@ -344,18 +353,23 @@ continue it's execution.
 ```java
 public class LogSafeConstruct extends Construct {
     @Override 
-    public ConstructProcessor prepareProcess(ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            ConstructContext context) {
         return new ConstructProcessor(
             input -> process(input, context.getRootLogger()),
             new Argument("input", fromValue(""), ATOMIC)
         );
     }
     
-    private MetaExpression process(MetaExpression input, Logger logger) {
+    private MetaExpression process(
+            MetaExpression input, 
+            Logger logger) {
         String message = input.getStringValue();
         
         if(message.matches(".*[p|P]assword.*")) {
-            throw new RobotRuntimeException("Tried to log the word password!");
+            throw new RobotRuntimeException(
+                "Tried to log the word password!"
+            );
         }
         
         logger.info(message);
@@ -413,14 +427,17 @@ one that reads all text from it. Let's walk through them
 ```java
 public class LoadConstruct extends Construct {
     @Override 
-    public ConstructProcessor prepareProcess(ConstructContext context) {
+    public ConstructProcessor prepareProcess(
+            ConstructContext context) {
         return new ConstructProcessor(
             path -> process(path, context.getRobotID()),
             new Argument("path", ATOMIC)
         );
     }
     
-    private MetaExpression process(MetaExpression path, RobotID robotID) {
+    private MetaExpression process(
+            MetaExpression path, 
+            RobotID robotID) {
         File file = getFile(robotID, path.getStringValue());
         
         // Create the expression
@@ -429,7 +446,10 @@ public class LoadConstruct extends Construct {
         try {
             result = fromValue(file.getCanonicalPath());
         } catch (IOException e) {
-            throw new RobotRuntimeException("Failed to open stream: " + e.getMessage(), e);
+            throw new RobotRuntimeException(
+                "Failed to open stream: " + e.getMessage(), 
+                e
+            );
         }
     
         // Push the stream
@@ -438,7 +458,10 @@ public class LoadConstruct extends Construct {
             resource = new MyDataResource(file);
             result.storeMeta(MyDataResource.class, resource);
         } catch (FileNotFoundException e) {
-            throw new RobotRuntimeException("File " + result.getStringValue() + " could not be found.");
+            throw new RobotRuntimeException(
+                "File " + result.getStringValue() + 
+                " could not be found."
+            );
         }
     
         return result;
@@ -457,13 +480,21 @@ public class ReadTextConstruct extends Construct {
     }
     
     private MetaExpression process(MetaExpression stream) {
-        MyDataResource resource = assertMeta(stream, "stream", MyDataResource.class, "File Resource");
+        MyDataResource resource = assertMeta(
+            stream, 
+            "stream", 
+            MyDataResource.class, 
+            "File Resource"
+        );
         
         try {
             String contents = IOUtils.toString(resource.getStream());
             return fromValue(contents);
         } catch (IOException e) {
-            throw new RobotRuntimeException("Failed to read stream: " + e.getMessage(), e);
+            throw new RobotRuntimeException(
+                "Failed to read stream: " + e.getMessage(), 
+                e
+            );
         }
     }
 }

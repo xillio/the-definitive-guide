@@ -24,7 +24,7 @@ set OUTPUT_FILE=%OUTPUT_TITLE%.%1
 set LOG_FILE=%LOG_DIR%%1.log
 set ERROR_LOG_FILE=%LOG_DIR%%1.error.log
 echo Building %OUTPUT_FILE%...
-pandoc -S -s --toc -o "%BUILD_DIR%%OUTPUT_FILE%" %INPUT_FILES%
+pandoc --smart --normalize --standalone --wrap=auto --highlight-style=tango --toc --output="%BUILD_DIR%%OUTPUT_FILE%" %INPUT_FILES%
 goto :eof
 
 :End

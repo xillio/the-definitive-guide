@@ -3,7 +3,7 @@
 This repository contains the sources for the guide on writing xill
 plugins. The distributions are built using pandoc.
 
-## Creating a Build
+## Creating a Build (Windows)
 1. Check out the repository
 2. Install [Pandoc](http://pandoc.org/installing.html)
 3. Install [MiTEX](http://miktex.org/download)

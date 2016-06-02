@@ -23,7 +23,9 @@ In the example to the right you can see how this is used to close the
 streams once the MetaExpression leaves the scope.
 
 ```java
-public class MyDataResource implements MetadataExpression, AutoCloseable {
+public class MyDataResource implements MetadataExpression, 
+    AutoCloseable {
+    
     private final FileInputStream stream;
     
     public MyDataResource(File file) throws FileNotFoundException {
