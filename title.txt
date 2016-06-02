@@ -1,5 +1,5 @@
 ---
-title: "Xill Plugnis: The Definitive Guide"
+title: "Xill Plugins: The Definitive Guide"
 author: Thomas Biesaart - Xillio
 language: en-US
 ...
