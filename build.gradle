@@ -5,13 +5,14 @@ ext.markdownFiles = fileTree(projectDir)
             include "**/**.md"
             exclude "README.md"
             exclude "resources/**"
+            exclude "build/**"
         }
 )
         .files
 
 // Then we create all tasks
 
-task clean {
+task clean(type: Delete) {
     delete buildDir
 }
 
@@ -23,7 +24,7 @@ pandocTask("pdf", "latex", "pdf")
 pandocTask("html", "html5", "html")
 pandocTask("epub", "epub", "epub")
 pandocTask("docx", "docx", "docx")
-
+pandocTask("markdown", "markdown", "md")
 
 
 def pandocTask(taskName, outputType, extension) {
@@ -39,7 +40,11 @@ def pandocTask(taskName, outputType, extension) {
                 '--standalone',
                 '--wrap=auto',
                 '--highlight-style=tango',
+                '--section-divs',
                 '--toc',
+                '--toc-depth=2',
+                '--reference-docx=resources/style.docx',
+                '--chapters',
                 "--to=$outputType",
                 '-o',
                 outputFile
