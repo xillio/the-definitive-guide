@@ -1,4 +1,4 @@
-# Preface
+# Preface {-}
 
 Birds fly, matches burn, wind blows and content grows. There's very
 little you can do about it. It seems like that longer we work with a
