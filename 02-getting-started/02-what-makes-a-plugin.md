@@ -13,12 +13,12 @@ can be loaded into the framework.
 ### Package Implementation
 The second requirement is the actual implementation of the package. This
 implementation is the class referenced by the package declaration and is 
-usually a subclass of **XillPlugin**.
+usually a subclass of `XillPlugin`.
 
 ### Constructs
 Now strictly speaking we do not need *constructs* to form a plugin, however
 without any your plugin will be fairly boring. 
-These *constructs* are implementations of the abstract **Construct** class
+These *constructs* are implementations of the abstract `Construct` class
 and they provide a way for the processor module to perform any operation.
 
 They are loaded by the package implementation and kept in the same sandbox

@@ -19,7 +19,7 @@ is mainly responsible for error handling and debugging.
 ### API
 The API contains all shared classes. This module does not have a functional
 responsibility other than to provide a shared interface for plugins to
-talk to. It contains essential classes like the **[MetaExpression](#metaexpression)**
+talk to. It contains essential classes like the [`MetaExpression`](#metaexpression)
 and all the shared data types like XML, Date and more.
 
 ### Plugins
