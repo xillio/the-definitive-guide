@@ -24,6 +24,7 @@ pandocTask("pdf", "latex", "pdf")
 pandocTask("html", "html5", "html")
 pandocTask("epub", "epub", "epub")
 pandocTask("docx", "docx", "docx")
+pandocTask("rtf", "rtf", "rtf")
 pandocTask("markdown", "markdown", "md")
 
 
