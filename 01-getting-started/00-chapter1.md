@@ -37,7 +37,40 @@ same applies to this guide, if you would like to see something explained
 in more detail or some subject is missing entirely then simply comment 
 on the page or find someone to add it.
 
-<!--- TODO: INCLUDE A PROJECT SETUP GUIDE -->
+### Building a plugin
+
+To build your plugin using maven you can set a parent pom. This will
+automatically add the Xill API to your dependencies as well as build a
+zip distribution.
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nl.xillio.xill</groupId>
+        <artifactId>plugins-parent</artifactId>
+        <!-- Insert the latest version here -->
+        <version>3.4.0</version>
+    </parent>
+
+    <groupId>io.xill
+    <artifactId>plugin-guide</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- We enable this plugin to make zip packages -->
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
 
 [Xill repository]: https://bitbucket.org/xillio/xill
 [Effective Java, Joshua Bloch]: https://books.google.nl/books?id=ka2VUBqHiWkC
