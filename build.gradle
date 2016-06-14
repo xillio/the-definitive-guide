@@ -48,7 +48,14 @@ def pandocTask(taskName, outputType, extension) {
                 '--chapters',
                 "--to=$outputType",
                 '-o',
-                outputFile
+                outputFile,
+                // PDF Settings
+                "--metadata=fontfamily:arev",
+                "--metadata=papersize:A4",
+                "--metadata=margin-top=150pt",
+                "--metadata=margin-bottom=240pt",
+                "--metadata=margin-left=90pt",
+                "--metadata=margin-right=90pt"
 
         args 'title.txt'
         args markdownFiles
