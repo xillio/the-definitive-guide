@@ -20,6 +20,7 @@ task build(group: 'build') {
 
 }
 
+pandocTask("latex", "latex", "latex")
 pandocTask("pdf", "latex", "pdf")
 pandocTask("html", "html5", "html")
 pandocTask("epub", "epub", "epub")
@@ -59,7 +60,8 @@ def pandocTask(taskName, outputType, extension) {
                     "--metadata=margin-bottom:160pt",
                     "--metadata=margin-left:60pt",
                     "--metadata=margin-right:60pt",
-                    "--metadata=linestretch:1.2"
+                    "--metadata=linestretch:1.2",
+                    "resources/latex.header.txt"
         }
 
         args 'title.txt'
