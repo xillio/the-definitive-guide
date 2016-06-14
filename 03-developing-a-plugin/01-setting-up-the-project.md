@@ -9,54 +9,46 @@ If you get a little confused or you simply want to see an example you
 can head over to [GitHub](https://github.com/xillio/definitive-guide/tree/master/project-example)
 and take a look at the project code that supports this guide.
 
-### Building with Gradle
-
-1. Make sure you have [Gradle 2+](http://gradle.org/gradle-download/) installed
-   or run an IDE with an embedded gradle installation.
-2. Create a `build.gradle` file containing the code below.
-
-    ```groovy
-    
-    repositories {
-      jcenter()
-    }
-    dependencies {
-      compile 'nl.xillio.xill:api:3.3.19'
-    }
-    ```
-
-3. Import your project into your IDE.
-
-### Building with Maven
+### Step 1: Setting up the build
 
 1. Make sure you have [Maven 3+](https://maven.apache.org/download.cgi)
    installed or run an IDE with an embedded maven installation.
 2. Create a `pom.xml` file containing the configuration below.
 
     ```xml
-    
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+        <parent>
+            <groupId>nl.xillio.xill</groupId>
+            <artifactId>plugins-parent</artifactId>
+            <!-- Replace this with the latest API version -->
+            <version>3.4.0</version>
+        </parent>
+
+        <artifactId>plugin-guide</artifactId>
+
+        <dependencies>
+            <!-- Here you declare your maven dependencies -->
+        </dependencies>
+
+        <build>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </build>
+    </project>	
     ```
 
 3. Import your project into your IDE.
 
-### Package Definition
-Now we have a build set up we can start creating files. The first thing
-we will do is create our package definition. This is fairly easy and only
-requires us to simply create a file at `META-INF/services/nl.xillio.plugins.XillPlugin`
-in your resources folder. So from your project root this will lead to a
-file at `src/main/resources/META-INF/services/nl.xillio.plugins.XillPlugin`.
-
-This file should contain 1 full class name per line of the implementations
-of the `XillPlugin` class. For the purpose of this guide we will create
-a plugin called *Guide* so we will add the following class name:
-```
-nl.xillio.xill.plugins.guide.GuideXillPlugin
-```
-The name of the class is important as it will reflect the name in Xill.
-
-### Package Implementation
-Let's create the implementation of the package we declared above. To do
-this simply create the class file and have the class implement `XillPlugin`.
+### Step 2: Package Implementation
+Now to create your plugin you should create a subclass of `XillPlugin`. The
+Maven build wil automatically pick it up and present it to the plugin framework.
 
 ```java
 package nl.xillio.xill.plugins.guide;
