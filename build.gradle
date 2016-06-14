@@ -43,19 +43,23 @@ def pandocTask(taskName, outputType, extension) {
                 '--highlight-style=tango',
                 '--section-divs',
                 '--toc',
-                '--toc-depth=2',
+                '--toc-depth=3',
                 '--reference-docx=resources/style.docx',
                 '--chapters',
                 "--to=$outputType",
                 '-o',
-                outputFile,
-                // PDF Settings
-                "--metadata=fontfamily:arev",
-                "--metadata=papersize:A4",
-                "--metadata=margin-top=150pt",
-                "--metadata=margin-bottom=240pt",
-                "--metadata=margin-left=90pt",
-                "--metadata=margin-right=90pt"
+                outputFile
+
+        if (outputType == 'latex') {
+
+            // PDF Settings
+            args "--metadata=fontfamily:arev",
+                    "--metadata=papersize:A4",
+                    "--metadata=margin-top=150pt",
+                    "--metadata=margin-bottom:240pt",
+                    "--metadata=margin-left:90pt",
+                    "--metadata=margin-right:90pt"
+        }
 
         args 'title.txt'
         args markdownFiles

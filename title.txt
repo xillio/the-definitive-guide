@@ -2,4 +2,5 @@
 title: "Xill Plugins: The Definitive Guide"
 author: Thomas Biesaart - Xillio
 language: en-US
+subtitle: "All you need to know about developing Xill plugins"
 ...
