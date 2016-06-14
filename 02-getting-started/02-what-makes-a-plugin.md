@@ -8,7 +8,8 @@ implement these specific parts then skip to [Developing a Plugin](#developing-a-
 ### Package Declaration
 The first requirement of a plugin is that it has a *package declaration*.
 This declaration specifies where the Processor can find the plugin so it
-can be loaded into the framework.
+can be loaded into the framework. If you use our maven build this declaration
+will be automatically generated.
 
 ### Package Implementation
 The second requirement is the actual implementation of the package. This
