@@ -1,8 +1,8 @@
 # Preface {-}
 
 Birds fly, matches burn, wind blows and content grows. There's very
-little you can do about it. It seems like that longer we work with a
-certain system the faster it's data starts to grow. This is all fine
+little you can do about it. It seems like the longer we work with a
+certain system the faster its data starts to grow. This is all fine
 until we reach the point where the current system no longer fits our
 needs and it has to be replaced. This is where the complex migration
 projects start.
@@ -10,11 +10,11 @@ projects start.
 Back in 2010 Ernst van Rheenen started a mission to make these migration
 projects run as smoothly and risk-free as possible. He did this by
 developing the first version of a scripting language that allows programmers
-to easily connect systems and perform various operations on your content.
+to easily connect systems and perform various operations on their content.
 Later this prototype was shaped into a tool that was used
 by all Xillio's consultants to perform custom migrations. It was able to
 withstand the full force of the content thrown at it so that is when, in
-2014 development started on the public third iteration of what we now
+2014, development started on the public third iteration of what we now
 know as *Xill*. This iteration is presented to everyone who is interested
 as an open source project.
 

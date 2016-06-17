@@ -1,8 +1,9 @@
 ## Components of Xill
-Xill is built on a modular framework with modules that have very clear
-responsibilities. 
 
 ![Components of the Xill Ecosystem](resources/xill_components.png)
+
+Xill is built on a modular framework with modules that have very clear
+responsibilities. 
 
 ### Language
 The language module is where the xill syntax is defined and where scripts

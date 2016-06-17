@@ -46,7 +46,7 @@ It will convert to allmost all other types.
 
 #### Boolean
 
-A Boolean` `MetaExpression` can be built from either Java or Xill.
+A `Boolean` `MetaExpression` can be built from either Java or Xill.
 
 | Create expression from | Code                                               |
 | ---------------------- | -------------------------------------------------- |
@@ -64,7 +64,7 @@ It will convert to allmost all other types.
 
 #### Number
 
-A Number` `MetaExpression` can be built from either Java or Xill.
+A `Number` `MetaExpression` can be built from either Java or Xill.
 
 | Create expression from | Code                                               |
 | ---------------------- | -------------------------------------------------- |
@@ -91,7 +91,7 @@ data. An example would be the result of the `File.openRead` construct.
 | Xill                   | `File.openWrite`                                             |
 | Java                   | `ExpressionBuilderHelper.fromValue(new SimpleIOStream(...))` |
 
-It will convert to allmost all other types.
+It will convert to almost all other types.
 
 | **Expression**          | Any Stream                   |
 | ----------------------- | ---------------------------- |
@@ -101,7 +101,7 @@ It will convert to allmost all other types.
 | **`getNumberValue()`**  | `Double.NaN`                 |
 
 
-### Datastructures in Xill
+### Data Structures in Xill
 The expressions that we looked at before can be arranged in different structures.
 In Xill we support three basic structure: `ATOMIC`, `LIST` and `OBJECT`.
 
