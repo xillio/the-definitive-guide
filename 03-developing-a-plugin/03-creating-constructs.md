@@ -51,3 +51,14 @@ requires an output value.
 > that the `GreetConstruct` class is actually an implementation of a
 > `ConstructProcessor` factory.
 
+One interesting piece of the code about that you should take a closer look
+at, is the constructor of the `Argument` class.
+```java
+new Argument("name", fromValue("World"), ATOMIC)
+```
+This is where we define how an argument behaves. First we give it a name
+by passing `"name"` as the first parameter, then we give it a default
+value by passing a `MetaExpression` as the second parameter. This is
+completely optional. And finally we pass any number of `ExpressionDataTypes`
+that determine what type of data structure you will accept. In our case
+we only accept `ATOMIC` values.

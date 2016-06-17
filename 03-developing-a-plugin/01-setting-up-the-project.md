@@ -11,8 +11,8 @@ and take a look at the project code that supports this guide.
 
 ### Step 1: Setting up the build
 
-1. Make sure you have [Maven 3+](https://maven.apache.org/download.cgi)
-   installed or run an IDE with an embedded maven installation.
+1. Make sure you have [Maven 3+](https://maven.apache.org/download.cgi) installed or run an 
+   IDE with an embedded maven installation.
 2. Create a `pom.xml` file containing the configuration below.
 
     ```xml
