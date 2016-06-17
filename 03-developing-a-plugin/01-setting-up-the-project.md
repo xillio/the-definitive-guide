@@ -67,5 +67,12 @@ public class GuideXillPlugin extends XillPlugin {
 This class is empty for now because we do not have any configuration
 that we have to do here.
 
+## The Project Structure
+A plugin exists within its own package. In the example above we created
+the `nl.xillio.xill.plugins.guide` package which is the root for the
+`GuideXillPlugin`. Later we will be adding *constructs* to this package.
+If we place them in the `nl.xillio.xill.plugins.guide.**constructs**`
+package they will be automatically loaded by the package.
+
 This concludes the initial project setup. We are now ready to start adding
 functionality to the plugin.
