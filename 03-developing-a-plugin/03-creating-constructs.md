@@ -25,7 +25,8 @@ public class GreetConstruct extends Construct {
         );
     }
 
-    private MetaExpression process(ConstructContext constructContext, MetaExpression name) {
+    private MetaExpression process(ConstructContext constructContext, 
+            MetaExpression name) {
         Logger logger = constructContext.getRootLogger();
 
         logger.info("Hello " + name.getStringValue() + "!");

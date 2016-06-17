@@ -61,7 +61,7 @@ def pandocTask(taskName, outputType, extension) {
                     "--metadata=margin-left:60pt",
                     "--metadata=margin-right:60pt",
                     "--metadata=linestretch:1.2",
-                    "resources/latex.header.txt"
+                    "--include-in-header=resources/latex.header.txt"
         }
 
         args 'title.txt'

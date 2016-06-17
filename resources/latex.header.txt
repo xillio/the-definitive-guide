@@ -1,1 +1,5 @@
-\pagestyle{plain}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\rhead{\includegraphics[width=2.5cm]{resources/xill-logo.png}}
+\rfoot{\includegraphics[width=3cm]{resources/xillio-logo.png}}
