@@ -26,7 +26,7 @@ and take a look at the project code that supports this guide.
             <groupId>nl.xillio.xill</groupId>
             <artifactId>plugins-parent</artifactId>
             <!-- Replace this with the latest API version -->
-            <version>3.4.0</version>
+            <version>3.40.00</version>
         </parent>
 
         <artifactId>plugin-guide</artifactId>
